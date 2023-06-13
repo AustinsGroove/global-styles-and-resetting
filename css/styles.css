@@ -68,12 +68,12 @@ h6 {
 /* списки */
 ul,
 ol {
-  list-style-type: none;
-}
-/* або */
-.list {
+    margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 0;
   list-style: none;
 }
+
 
 /* контакти і адреса */
 .address {
@@ -217,7 +217,8 @@ display: inline-flex */
 flex-direction: row | row-reverse | column | column-reverse 
 justify-content: flex-start | flex-end | center | space-between | space-around (1/2-1-1/2) | space-evenly (1-1-1)
 align-items: stretch | flex-start | flex-end | center | baseline (вирівнювання одного рядку відносно крос лінії)
-align-content: flex-start | flex-end | center | space-between | space-around | space-evenly | stretch (вирівнювання всього контенту відносно крос лінії)
+align-content: flex-start | flex-end | center | space-between | space-around | space-evenly | stretch (вирівнювання 
+              всього контенту відносно крос лінії)
 flex-wrap: nowrap | wrap | wrap-reverse ( дозволяє перетворити однорядковий контейнер на багаторядковий)
 
 ДЛЯ ЕЛЕМЕНТІВ
