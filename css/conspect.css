@@ -759,6 +759,17 @@ transform: none | <тип трансформації> <тип трансформ
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
   visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
 */
+/* Прокрутка контенту модального вікна при зменшенні вьюпорта менше мінімальної висоти вікна:
+overflow-y: auto;
+*/
+/* Блокування прокрутки сторінки коли відкрите модальне вікно 
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/body-scroll-lock/3.1.5/bodyScrollLock.min.js"
+      integrity="sha512-HowizSDbQl7UPEAsPnvJHlQsnBmU2YMrv7KkTBulTLEGz9chfBoWYyZJL+MUO6p/yBuuMO/8jI7O29YRZ2uBlA=="
+      crossorigin="anonymous"
+    ></script>
+*/
 /**
   |============================
   | Елементи form
