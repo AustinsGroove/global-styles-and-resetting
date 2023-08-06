@@ -1,0 +1,56 @@
+.sect {
+  background-color: #11131f;
+  color: aliceblue;
+  padding: 20px;
+}
+.container {
+  width: 1200px;
+  margin: 0 auto;
+}
+.thumb {
+  margin: 0 auto;
+  height: 473px;
+  width: 533px;
+}
+.thumb img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.svg-style {
+  fill: aliceblue;
+  stroke: aqua;
+}
+.thumb-mask {
+  margin: 0 auto;
+  height: 473px;
+  width: 533px;
+}
+.thumb-mask img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  -webkit-mask-image: url(../src/img/yacht-1-desktop.png);
+  -webkit-mask-size: cover;
+}
+.icon {
+  fill: linear-gradient(to right, blue, pink);
+}
+.image {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  /* -webkit-mask-image: url(../src/img/yacht-1-desktop.png);
+  -webkit-mask-size: 100%; */
+}
+.ellipse-1 {
+  width: 414px;
+  height: 414px;
+  transform: rotate(-45.074deg);
+  flex-shrink: 0;
+  color: aliceblue;
+  border-radius: 414px;
+  opacity: 0.8999999761581421;
+  background: #939cac;
+  filter: blur(100px);
+}

@@ -13,9 +13,55 @@
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/modern-normalize@1.1.0/modern-normalize.min.css"
+      <link
+      rel="stylesheet"
+      href="./css/styles.css"
     />
     <!-- --------кінець-------------- -->
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
-  <body></body>
+  <body>
+    <section class="sect">
+      <div class="container">
+        <h1>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum
+          repellendus veniam hic incidunt impedit ut voluptates. Accusantium
+          nulla impedit dolorum modi, est deserunt eos facilis error! Sed dolor
+          aut ipsum?
+        </h1>
+      </div>
+      <div class="thumb">
+        <img src="./src/img/yacht-1-desktop.png" alt="" />
+      </div>
+      <div class="thumb-mask">
+        <img src="./src/img/airplane.png" alt="" />
+      </div>
+      <div class="ellipse-1"></div>
+    </section>
+    <svg class="icon" width="123" height="123">
+      <use href="./src/img/icons.svg#icon-facebook"></use>
+    </svg>
+    <svg class="icon" width="123" height="123">
+      <use href="./src/img/icons.svg#icon-instagram"></use>
+    </svg>
+    <svg class="icon" width="123" height="123">
+      <use href="./src/img/icons.svg#icon-youtube"></use>
+    </svg>
+    <section class="sect">
+      <picture class="image">
+        <source
+          srcset="./src/img/airplane.png 1x, ./src/img/airplane.png 2x"
+          media="(max-width:767px)"
+        />
+        <source
+          srcset="./src/img/airplane.png 1x, ./src/img/airplane.png 2x"
+          media="(min-width:768px)"
+        />
+
+        <img src="./src/img/airplane.png" alt="apple" />
+      </picture>
+      <img src="./src/img/yacht-1-desktop.webp" alt="sdf" />
+    </section>
+    <script src="js/script.js"></script>
+  </body>
 </html>
