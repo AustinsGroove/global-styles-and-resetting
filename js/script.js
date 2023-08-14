@@ -6,3 +6,4 @@ do {
 } while (password.length < 5);
 
 console.log('Ввели пароль: ', password);
+console.log('true' == 'false');
