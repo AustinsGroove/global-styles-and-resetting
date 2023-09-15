@@ -5439,11 +5439,11 @@ elem.textContent возвращает текстовый контент внут
 Свойство classList
 В свойстве classList хранится объект с методами для работы с классами элемента.
 
-elem.classList.contains(cls) - возвращает true или false в зависимости от того, есть ли у элемента класс cls.
-elem.classList.add(cls) - добавляет класс cls в список классов элемента.
-elem.classList.remove(cls) - удаляет класс cls из списка классов элемента.
-elem.classList.toggle(cls) - если класса cls нет, то добавляет его, если есть, наоборот удаляет.
-elem.classList.replace(oldClass, newClass) - заменяет существующий класс oldClass на указанный newClass.
+elem.classList.contains("cls") - возвращает true или false в зависимости от того, есть ли у элемента класс cls.
+elem.classList.add("cls") - добавляет класс cls в список классов элемента.
+elem.classList.remove("cls") - удаляет класс cls из списка классов элемента.
+elem.classList.toggle("cls") - если класса cls нет, то добавляет его, если есть, наоборот удаляет.
+elem.classList.replace("oldClass", "newClass") - заменяет существующий класс oldClass на указанный newClass.
 
 
 
@@ -5528,6 +5528,8 @@ console.log(image); // <img src="https://placeimg.com/640/480/nature" alt="Natur
 
 
 
+
+
 Добавление
 Чтобы созданный элемент был отображен на странице, его необходимо добавить к уже существующему элементу в DOM-дереве. 
 Допустим, что добавляем в некий элемент element, для этого есть методы.
@@ -5541,6 +5543,29 @@ element.before(el1, el2, ...) - добавляет один или нескол�
 ИНТЕРЕСНО
 Если элемент для вставки уже находится в DOM, то он изымается из своего старого места и добавляется в новое. 
 Отсюда вытекает правило - один и тот же элемент не может быть одновременно в двух местах.
+
+const list = document.querySelector(".usernames");
+
+// Adds an item to the end of the list
+const lastItem = document.createElement("li");
+lastItem.textContent = "Poly";
+list.append(lastItem);
+
+// Adds an item to the beginning of the list
+const firstItem = document.createElement("li");
+firstItem.textContent = "Ajax";
+list.prepend(firstItem);
+
+// Adds a title before the list
+const title = document.createElement("h2");
+title.textContent = "USERNAMES";
+list.before(title);
+
+// Adds a paragraph after the list
+const text = document.createElement("p");
+text.textContent =
+  "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum tenetur assumenda fugiat maxime, soluta aspernatur quasi nihil in asperiores ad distinctio illo et debitis error iure voluptate numquam maiores nisi. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum tenetur assumenda fugiat maxime, soluta aspernatur quasi nihil in asperiores ad distinctio illo et debitis error iure voluptate numquam maiores nisi!";
+list.after(text);
 
 
 
@@ -5596,6 +5621,18 @@ Reflow - происходит когда изменения затрагиваю
 Чтение
 Свойство innerHTML хранит содержимое элемента, включая теги, в виде строки. Возвращаемое значение это всегда валидный HTML-код.
 
+const article = document.querySelector(".article");
+console.log(article.innerHTML);
+
+const title = document.querySelector(".article .title");
+console.log(title.innerHTML);
+
+const text = document.querySelector(".article .text");
+console.log(text.innerHTML);
+
+const link = document.querySelector(".article .link");
+console.log(link.innerHTML);
+
 
 
 
@@ -5603,9 +5640,14 @@ Reflow - происходит когда изменения затрагиваю
 Свойство innerHTML доступно как для чтения, так и для записи. Если записать в него строку с HTML-тегами, то браузер во время парсинга строки 
 превратит их в валидные элементы и добавит в DOM-дерево.
 
+const title = document.querySelector(".article .title");
+title.innerHTML = 'New and <span class="accent">improved</span> title';
+
 
 ИНТЕРЕСНО
 Если в свойство innerHTML записать пустую строку, то содержимое элемента будет очищено. Это простой и быстрый способ удаления всего содержимого.
+
+
 
 При таком подходе, в отличии от document.createElement(), мы не получаем ссылку на созданный DOM-элемент. 
 Это первый шаг на пути к шаблонизации - создания большого количества однотипной разметки с разными данными по заранее определённому шаблону. 
@@ -5614,6 +5656,19 @@ Reflow - происходит когда изменения затрагиваю
 Однотипная (шаблонная) разметка создается из массива данных. Приём заключается в переборе этого массива и составлении одной строки с HTML тегами, 
 которую потом записываем в innerHTML элемента.
 
+const technologies = ["HTML", "CSS", "JavaScript", "React", "Node"];
+const list = document.querySelector(".list");
+
+const markup = technologies
+  .map((technology) => `<li class="list-item">${technology}</li>`)
+  .join("");
+
+// Check the console, you'll see a single string with HTML tags
+console.log(markup);
+
+// Adding all the markup in one operation
+list.innerHTML = markup;
+
 
 
 
@@ -5621,8 +5676,20 @@ Reflow - происходит когда изменения затрагиваю
 Изменение elem.innerHTML полностью удалит и пересоздаст всех потомков элемента elem. 
 Если элемент изначально не пустой, то будут дополнительные затраты на сериализацию уже существующей разметки, а это плохо.
 
+const article = document.querySelector(".article");
+const htmlString = `<p class="article-text">Nullam quis ante. Vestibulum dapibus nunc ac augue. In consectetuer turpis ut velit.</p>
+   <a class="link" href="#">Read more...</a>`;
+
+// Replace += with = operator. See the difference? 
+// Article title is lost because we overwrite element content.
+article.innerHTML += htmlString;
+
+
 ИНТЕРЕСНО
 Используйте свойство elem.innerHTML для добавления только в случае когда элемент elem пустой или если надо полностью заменить его содержимое.
+
+
+
 
 Метод insertAdjacentHTML()
 Современный метод для добавления строки с HTML-тегами до, после или внутрь элемента. Решает проблему innerHTML с повторной сериализацией содержимого элемента 
@@ -5636,6 +5703,16 @@ elem.insertAdjacentHTML(position, string);
 "afterbegin" - внутри elem, перед всеми детьми
 "beforeend" - внутри elem, после всех детей
 "afterend" - после elem
+
+const list = document.querySelector(".list");
+
+const newTechnologies = ["React", "TypeScript", "Node.js"];
+const markup = newTechnologies
+  .map((technology) => `<li class="list-item new">${technology}</li>`)
+  .join("");
+
+list.insertAdjacentHTML("beforeend", markup);
+list.insertAdjacentHTML("beforebegin", "<h2>Popular technologies</h2>");
 
 
 ИНТЕРЕСНО
