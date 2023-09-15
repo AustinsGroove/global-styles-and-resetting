@@ -1,40 +1,33 @@
-const atTheOldToad = {
-  potions: [
-    { name: 'Speed potion', price: 460 },
-    { name: 'Dragon breath', price: 780 },
-    { name: 'Stone skin', price: 520 },
-  ],
+class Car {
   // Change code below this line
-  getPotions() {
-    return this.potions;
-  },
-  addPotion(newPotion) {
-    for (const potion of this.potions) {
-      if (potion.name === newPotion.name) {
-        return `Error! Potion ${newPotion.name} is already in your inventory!`;
-      }
-    }
-    this.potions.push(newPotion);
-  },
-  removePotion(potionName) {
-    for (const potion of this.potions) {
-      if (potion.name === potionName) {
-        this.potions.splice(this.potions.indexOf(potion), 1);
-        return;
-      }
-    }
-    return `Potion ${potionName} is not in inventory!`;
-  },
-  updatePotionName(oldName, newName) {
-    for (const potion of this.potions) {
-      if (potion.name === oldName) {
-        this.potions[this.potions.indexOf(potion)].name = newName;
-        return;
-      }
-    }
-    return `Potion ${oldName} is not in inventory!`;
-  },
-  // Change code above this line
-};
+  static MAX_PRICE = 50000;
 
-atTheOldToad.updatePotionName('Speed potion', 'Fast potion');
+  #price;
+
+  constructor({ price }) {
+    this.#price = price;
+  }
+
+  get price() {
+    return this.#price;
+  }
+
+  set price(newPrice) {
+    if (newPrice > Car.MAX_PRICE) {
+      return;
+    }
+
+    this.#price = newPrice;
+  }
+  // Change code above this line
+}
+console.log(Car.MAX_PRICE);
+
+const audi = new Car({ price: 35000 });
+console.log(audi.price); // 35000
+
+audi.price = 49000;
+console.log(audi.price); // 49000
+
+audi.price = 51000;
+console.log(audi.price); // 49000
